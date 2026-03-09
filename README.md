@@ -1,56 +1,63 @@
-# 🍷 AI Wine Type Classifier (A ML Web App)
+# 🍷 AI Wine Type Classifier
 
-A full-stack machine learning web application that predicts whether a wine sample is **Red** or **White** based on its chemical composition.
+A machine learning web application that predicts whether a wine sample is **Red** or **White** based on its chemical composition.
 
-Built with an end-to-end pipeline: dataset → model training → API → interactive UI.
+The project demonstrates a complete ML workflow — from model training to deployment — using a FastAPI backend and a React-based user interface.
 
 ---
 
-## 🚀 Live Concept
+## 🚀 Application Overview
 
-User enters chemical composition values → ML model analyzes → UI shows:
+Users enter chemical attributes of a wine sample through the web interface.  
+The system processes the input and returns:
 
-- predicted wine type
+- predicted wine type (Red or White)
 - probability confidence
-- visual comparison bar (Red vs White likelihood)
+- visual comparison of prediction probabilities
 
 ---
 
-## 🧠 Problem Statement
+## 🧠 Problem
 
-Wine classification is traditionally done through lab analysis and expert evaluation.  
-This project demonstrates how machine learning can:
-
-- learn patterns from chemical attributes  
-- classify wine type automatically  
-- expose predictions via a deployable web interface  
+Wine classification traditionally requires laboratory analysis and expert evaluation.  
+This project shows how machine learning models can learn patterns in chemical attributes and perform automated classification.
 
 ---
 
-## 🏗️ Tech Stack
+## 🏗️ System Architecture
+
+```
+User Input → React UI → FastAPI API → ML Model → Prediction → UI Visualization
+```
+
+The backend handles inference while the frontend provides an interactive interface for data entry and result visualization.
+
+---
+
+## ⚙️ Tech Stack
 
 ### Frontend
 - React (Vite)
 - Axios
-- Modern responsive UI
-- Interactive input controls
+- Interactive form interface
+- Responsive layout
 
 ### Backend
 - FastAPI
-- TensorFlow / Keras
-- Scikit-learn
 - Pydantic
+- Scikit-learn
+- TensorFlow / Keras
 
 ### Machine Learning
 - Binary classification model
-- Feature scaling using StandardScaler
-- Trained on wine chemical dataset
+- StandardScaler for feature normalization
+- Wine chemistry dataset
 
 ---
 
-## 📊 Model Inputs
+## 📊 Model Features
 
-The model predicts wine type using **11 chemical features**:
+The model uses **11 chemical properties** commonly measured in wine chemistry:
 
 - Fixed acidity  
 - Volatile acidity  
@@ -64,24 +71,20 @@ The model predicts wine type using **11 chemical features**:
 - Sulphates  
 - Alcohol  
 
-These are real lab-measured properties used in wine chemistry analysis.
+These features allow the model to learn the chemical patterns that differentiate red and white wines.
 
 ---
 
-## 🧾 Output
+## 🧾 Prediction Output
 
-The system predicts:
-
-- 🍷 Wine Type → Red / White  
-- 📈 Confidence Score → probability percentage  
-- 📊 Visual probability comparison bar  
-
-Example:
+Example result:
 
 ```
-Prediction: White Wine  
+Prediction: White Wine
 Confidence: 78% White | 22% Red
 ```
+
+The UI also visualizes the probability distribution between the two classes.
 
 ---
 
@@ -89,17 +92,37 @@ Confidence: 78% White | 22% Red
 
 1. Dataset ingestion  
 2. Data preprocessing  
-3. Feature scaling  
+3. Feature scaling (StandardScaler)  
 4. Model training  
-5. Model export (.keras)  
-6. API integration  
-7. Frontend visualization  
+5. Model export (`.keras`)  
+6. API integration for inference  
+7. Frontend visualization of predictions
 
 ---
 
-## ⚙️ Setup & Run
+## 📁 Project Structure
 
-### 1️⃣ Backend
+```
+wine-classifier/
+│
+├── backend/
+│   ├── app/
+│   ├── train/
+│   ├── models/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## 🛠️ Running the Project
+
+### 1️⃣ Start Backend
 
 ```bash
 cd backend
@@ -107,14 +130,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Runs at:
+API runs at:
+
 ```
 http://127.0.0.1:8000
 ```
 
 ---
 
-### 2️⃣ Frontend
+### 2️⃣ Start Frontend
 
 ```bash
 cd frontend
@@ -122,7 +146,8 @@ npm install
 npm run dev
 ```
 
-Runs at:
+Frontend runs at:
+
 ```
 http://localhost:5173
 ```
@@ -131,33 +156,32 @@ http://localhost:5173
 
 ## 🧠 Training the Model
 
+To retrain the classifier:
+
 ```bash
 cd backend
 python train/train_model.py
 ```
 
-Generates:
+This generates:
 
 - trained model
-- scaler
-- feature order
+- scaler object
+- feature configuration
 
 ---
 
-## 📸 Features
+## 📌 Project Highlights
 
-- Full ML lifecycle implementation  
-- Interactive UI  
-- Real-time predictions  
-- Confidence visualization  
-- Production-ready architecture  
-- Resume-grade deployment structure  
+- End-to-end ML application
+- Clean separation of frontend and backend
+- API-based model inference
+- Interactive prediction interface
+- Modular training pipeline
 
 ---
-
 
 ## 👨‍💻 Author
 
-Engineering student focused on ML + backend systems and production deployment workflows.
-
----
+Vinayak Pattar  
+Engineering student interested in machine learning systems and backend application development.
